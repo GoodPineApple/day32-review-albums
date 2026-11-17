@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Archive · 페이지 이동</title>
+    <script>
+      // 정적 호스팅에는 SPA 재작성 기능이 없어 시작 페이지로 경로를 전달합니다.
+      const base = "/day32-review-albums";
+      if (window.location.pathname.startsWith(base + "/")) {
+        const route = window.location.pathname.slice(base.length) + window.location.search + window.location.hash;
+        window.location.replace(base + "/?__route=" + encodeURIComponent(route));
+      }
+    </script>
+  </head>
+  <body><p>앨범 페이지로 이동 중입니다. <a href="/day32-review-albums/">홈으로 이동</a></p></body>
+</html>

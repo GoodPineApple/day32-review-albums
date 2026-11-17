@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="공개 앨범을 탐색하고 마음에 드는 앨범을 보관하는 Album Archive" />
+    <script>
+      // Pages의 404 안내가 전달한 경로를 React가 시작하기 전에 복원합니다.
+      const route = new URLSearchParams(window.location.search).get("__route");
+      if (route && route.startsWith("/") && !route.startsWith("//")) {
+        window.history.replaceState(null, "", "%BASE_URL%".replace(/\/$/, "") + route);
+      }
+    </script>
     <title>Album Archive · 앨범 탐색</title>
   </head>
   <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>

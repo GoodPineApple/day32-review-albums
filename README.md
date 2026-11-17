@@ -29,7 +29,11 @@ npm run build
 npm run preview
 ```
 
-정적 호스팅에 배포한다면 `/albums/1` 같은 직접 접근도 `index.html`로 전달하는 SPA fallback 설정이 필요합니다.
+배포 주소: https://goodpineapple.github.io/day32-review-albums/
+
+`main`에 push하면 `.github/workflows/deploy.yml`이 Node.js 22에서 설치 → lint → build → GitHub Pages 배포를 실행합니다. 개발 서버는 `/`에서, 프로덕션 빌드는 `/day32-review-albums/`에서 작동하도록 Vite의 base와 BrowserRouter의 basename을 연결했습니다.
+
+GitHub Pages에는 SPA 재작성 기능이 없어 `public/404.html`이 직접 접근한 경로·검색 조건·해시를 시작 페이지에 전달하고, `index.html`이 React 실행 전에 원래 주소를 복원합니다. 배포 후 `/day32-review-albums/albums/1` 같은 상세 주소를 직접 열거나 새로고침해도 해당 페이지를 표시합니다. 초기 요청은 Pages의 404 응답을 거쳐 홈의 정상 응답으로 이동합니다. 이 Pages 전용 fallback을 다른 호스팅에 배포할 때는 해당 서비스의 SPA 재작성 설정에 맞추세요.
 
 ## 페이지와 URL
 
